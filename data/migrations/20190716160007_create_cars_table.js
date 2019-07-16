@@ -1,16 +1,19 @@
 
 exports.up = function(knex) {
     //we make changes to the db schema 
-    return knex.schema.createTable('fruits', tbl => {
+    return knex.schema.createTable('cars', tbl => {
         tbl.increments();
         
-        tbl.string('name', 128).unique().notNullable();
-        tbl.decimal('avgWeightOz');
-        tbl.boolean('delicious');
+        tbl.decimal('VIN', 128).unique().notNullable();
+        tbl.string('Make').notNullable();
+        tbl.string('Model').notNullable();
+        tbl.decimal('Mileage').notNullable();
+        tbl.string('Transmission');
+        tbl.string('Title');
     })
 };
 
 exports.down = function(knex) {
     //we undo the changes to the db schema
-    return knex.schema.dropTableIfExists('fruits');
+    return knex.schema.dropTableIfExists('cars');
 };
